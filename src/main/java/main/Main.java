@@ -1,5 +1,6 @@
 package main;
 
+import UserInterface.MainForm;
 import UserInterface.SearchResult;
 import config.IProjectConfig;
 import javafx.application.Application;
@@ -18,11 +19,13 @@ import java.io.IOException;
 
 public class Main {
     private static final IProjectConfig config = ConfigFactory.create(IProjectConfig.class, System.getProperties());
+    private static final MainForm mainForm = new MainForm();
 
     public static void main(String[] args) throws IOException {
         ApiService apiService = new ApiService();
 
-        YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", "hello", config.apiKey()).getYouTubeBody();
+        //YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", "hello", config.apiKey()).getYouTubeBody();
+        YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", mainForm.getSearchRequest(), config.apiKey()).getYouTubeBody();
 
         SearchResult searchResult = new SearchResult(body.getItems().get(0).getSnippet().getTitle(),
                 body.getItems().get(0).getSnippet().getChannelTitle(),
