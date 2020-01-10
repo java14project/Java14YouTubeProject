@@ -1,8 +1,10 @@
 
 package responses;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Thumbnails {
@@ -15,6 +17,9 @@ public class Thumbnails {
 
     @JsonProperty("medium")
     private Medium medium;
+
+    public Thumbnails(){
+    }
 
     public Thumbnails(Default idefault, High high, Medium medium) {
         this.idefault = idefault;
@@ -45,4 +50,5 @@ public class Thumbnails {
     public void setMedium(Medium medium) {
         this.medium = medium;
     }
+
 }

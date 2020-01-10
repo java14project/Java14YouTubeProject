@@ -24,8 +24,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ApiService apiService = new ApiService();
 
-        //YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", "hello", config.apiKey()).getYouTubeBody();
-        YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", mainForm.getSearchRequest(), config.apiKey()).getYouTubeBody();
+        YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", "hello", config.apiKey()).getYouTubeBody();
+        //YouTubeBody body = apiService.sendGetRequest(config.baseURL(), "snippet", "1", mainForm.getSearchRequest(), config.apiKey()).getYouTubeBody();
+
+        System.out.println(body.getThumbnailUrl());
 
         SearchResult searchResult = new SearchResult(body.getItems().get(0).getSnippet().getTitle(),
                 body.getItems().get(0).getSnippet().getChannelTitle(),

@@ -96,4 +96,8 @@ public class YouTubeBody {
     public void setRegionCode(String regionCode) {
         this.regionCode = regionCode;
     }
+
+    public String getThumbnailUrl(){
+        return items.get(0).getSnippet().getThumbnails().getHigh().getUrl();
+    }
 }
