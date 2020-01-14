@@ -28,7 +28,14 @@ public class Snippet {
     @JsonProperty("title")
     private String title;
 
-    public Snippet(String channelId, String channelTitle, String description, String liveBroadcastContent, String publishedAt, Thumbnails thumbnails, String title) {
+    @JsonProperty("customUrl")
+    private String customUrl;
+
+    @JsonProperty("localized")
+    private Localized localized;
+
+    public Snippet(String channelId, String channelTitle, String description, String liveBroadcastContent,
+                   String publishedAt, Thumbnails thumbnails, String title, String customUrl, Localized localized) {
         this.channelId = channelId;
         this.channelTitle = channelTitle;
         this.description = description;
@@ -36,6 +43,8 @@ public class Snippet {
         this.publishedAt = publishedAt;
         this.thumbnails = thumbnails;
         this.title = title;
+        this.customUrl = customUrl;
+        this.localized = localized;
     }
 
     public String getChannelId() {
@@ -92,5 +101,21 @@ public class Snippet {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCustomUrl() {
+        return customUrl;
+    }
+
+    public void setCustomUrl(String customUrl) {
+        this.customUrl = customUrl;
+    }
+
+    public Localized getLocalized() {
+        return localized;
+    }
+
+    public void setLocalized(Localized localized) {
+        this.localized = localized;
     }
 }

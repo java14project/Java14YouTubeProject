@@ -13,9 +13,13 @@ public class Id {
     @JsonProperty("videoId")
     private String videoId;
 
-    public Id(String kind, String videoId) {
+    @JsonProperty("channelId")
+    private String channelId;
+
+    public Id(String kind, String videoId, String channelId) {
         this.kind = kind;
         this.videoId = videoId;
+        this.channelId = channelId;
     }
 
     public String getKind() {
@@ -32,5 +36,13 @@ public class Id {
 
     public void setVideoId(String videoId) {
         this.videoId = videoId;
+    }
+
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
     }
 }

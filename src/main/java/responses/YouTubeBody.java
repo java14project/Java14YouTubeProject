@@ -31,7 +31,11 @@ public class YouTubeBody {
     @JsonProperty("regionCode")
     private String regionCode;
 
-    public YouTubeBody(String etag, List<Item> items, String kind, String nextPageToken, PageInfo pageInfo, String prevPageToken, String regionCode) {
+    @JsonProperty("id")
+    private String id;
+
+    public YouTubeBody(String etag, List<Item> items, String kind, String nextPageToken,
+                       PageInfo pageInfo, String prevPageToken, String regionCode, String id) {
         this.etag = etag;
         this.items = items;
         this.kind = kind;
@@ -39,6 +43,7 @@ public class YouTubeBody {
         this.pageInfo = pageInfo;
         this.prevPageToken = prevPageToken;
         this.regionCode = regionCode;
+        this.id = id;
     }
 
     public String getEtag() {
@@ -97,7 +102,60 @@ public class YouTubeBody {
         this.regionCode = regionCode;
     }
 
-    public String getThumbnailUrl(){
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
+    public String getThumbnailUrl(int itemNumber) {
+        return items.get(itemNumber).getSnippet().getThumbnails().getHigh().getUrl();
+    }
+
+    public String getTitle(int itemNumber) {
+        return items.get(itemNumber).getSnippet().getTitle();
+    }
+
+    public String getDescription(int itemNumber) {
+        return items.get(itemNumber).getSnippet().getDescription();
+    }
+
+    public String getChannelId(int itemNumber) {
+        return items.get(itemNumber).getSnippet().getChannelId();
+    }
+
+    public String getChannelTitle(int itemNumber) {
+        return items.get(itemNumber).getSnippet().getChannelTitle();
+    }
+
+    public String getPublishDate(int itemNumber) {
+        return items.get(itemNumber).getSnippet().getPublishedAt();
+    }
+
+    public String getThumbnailUrl() {
         return items.get(0).getSnippet().getThumbnails().getHigh().getUrl();
+    }
+
+    public String getTitle() {
+        return items.get(0).getSnippet().getTitle();
+    }
+
+    public String getDescription() {
+        return items.get(0).getSnippet().getDescription();
+    }
+
+    public String getChannelId() {
+        return items.get(0).getSnippet().getChannelId();
+    }
+
+    public String getChannelTitle() {
+        return items.get(0).getSnippet().getChannelTitle();
+    }
+
+    public String getPublishDate() {
+        return items.get(0).getSnippet().getPublishedAt();
     }
 }
